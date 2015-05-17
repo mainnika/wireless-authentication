@@ -1,0 +1,3 @@
+syntax: glob
+WirelessListener/nbproject/*.bash
+WirelessListener/nbproject/private/
