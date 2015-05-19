@@ -1,3 +1,5 @@
 syntax: glob
 WirelessListener/nbproject/*.bash
 WirelessListener/nbproject/private/
+WirelessSpammer/nbproject/private/
+WirelessSpammer/nbproject/*.bash

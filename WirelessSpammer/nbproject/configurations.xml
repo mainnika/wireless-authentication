@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>eapol.h</itemPath>
+      <itemPath>ethernet.h</itemPath>
+      <itemPath>ieee80211.h</itemPath>
+      <itemPath>if_arp.h</itemPath>
+      <itemPath>if_llc.h</itemPath>
+      <itemPath>pcap.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="osdep" projectFiles="true">
+        <itemPath>osdep/airpcap.c</itemPath>
+        <itemPath>osdep/airpcap.h</itemPath>
+        <itemPath>osdep/byteorder.h</itemPath>
+        <itemPath>osdep/common.c</itemPath>
+        <itemPath>osdep/common.h</itemPath>
+        <itemPath>osdep/crctable_osdep.h</itemPath>
+        <itemPath>osdep/file.c</itemPath>
+        <itemPath>osdep/linux.c</itemPath>
+        <itemPath>osdep/linux_tap.c</itemPath>
+        <itemPath>osdep/network.c</itemPath>
+        <itemPath>osdep/network.h</itemPath>
+        <itemPath>osdep/osdep.c</itemPath>
+        <itemPath>osdep/osdep.h</itemPath>
+        <itemPath>osdep/packed.h</itemPath>
+        <itemPath>osdep/pcap.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="radiotap" projectFiles="true">
+        <itemPath>radiotap/platform.h</itemPath>
+        <itemPath>radiotap/radiotap.c</itemPath>
+        <itemPath>radiotap/radiotap.h</itemPath>
+        <itemPath>radiotap/radiotap_iter.h</itemPath>
+      </logicalFolder>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>CLang|CLang</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <warningLevel>3</warningLevel>
+        </cTool>
+        <ccTool>
+          <standard>8</standard>
+          <warningLevel>3</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>pcap</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="eapol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ieee80211.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_arp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_llc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="osdep/airpcap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/airpcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/byteorder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/common.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/crctable_osdep.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/file.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/linux.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/linux_tap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/network.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/network.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/osdep.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/osdep.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/packed.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="radiotap/platform.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="radiotap/radiotap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="radiotap/radiotap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="radiotap/radiotap_iter.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>MIPSEL|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/home/mainnika/.lib_mips/pcap/include</pElem>
+          </incDir>
+          <warningLevel>3</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <incDir>
+            <pElem>/home/mainnika/.lib_mips/pcap/include</pElem>
+          </incDir>
+          <warningLevel>3</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/home/mainnika/.lib_mips/pcap/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>pcap</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-static</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="eapol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ieee80211.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_arp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_llc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="osdep/airpcap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/airpcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/byteorder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/common.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/crctable_osdep.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/file.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/linux.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/linux_tap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/network.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/network.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/osdep.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="osdep/osdep.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/packed.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osdep/pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="radiotap/platform.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="radiotap/radiotap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="radiotap/radiotap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="radiotap/radiotap_iter.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
