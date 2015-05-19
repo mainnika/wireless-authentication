@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>eapol.h</itemPath>
+      <itemPath>ethernet.h</itemPath>
+      <itemPath>ieee80211.h</itemPath>
+      <itemPath>if_arp.h</itemPath>
+      <itemPath>if_llc.h</itemPath>
+      <itemPath>pcap.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -71,6 +77,16 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="eapol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ieee80211.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_arp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_llc.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="osdep/airpcap.c" ex="false" tool="0" flavor2="0">
@@ -102,6 +118,8 @@
       <item path="osdep/packed.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="osdep/pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="pcap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="radiotap/platform.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -150,6 +168,16 @@
           <commandLine>-static</commandLine>
         </linkerTool>
       </compileType>
+      <item path="eapol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ieee80211.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_arp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="if_llc.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="osdep/airpcap.c" ex="false" tool="0" flavor2="0">
@@ -181,6 +209,8 @@
       <item path="osdep/packed.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="osdep/pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="pcap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="radiotap/platform.h" ex="false" tool="3" flavor2="0">
       </item>
