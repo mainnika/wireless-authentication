@@ -70,10 +70,8 @@ struct ieee80211_radiotap_iterator {
 	uint32_t *_next_bitmap;
 
 	unsigned char *this_arg;
-#ifdef RADIOTAP_SUPPORT_OVERRIDES
 	const struct radiotap_override *overrides;
 	int n_overrides;
-#endif
 	int this_arg_index;
 	int this_arg_size;
 

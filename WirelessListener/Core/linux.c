@@ -61,7 +61,7 @@
          * - since we can't support extensions we don't understand
          * - since linux does not include it in userspace headers
          */
-#include "osdep.h"
+#include "core.h"
 #include "pcap.h"
 #include "crctable_osdep.h"
 #include "common.h"
@@ -2164,7 +2164,7 @@ static int linux_set_mac(struct wif *wi, unsigned char *mac)
         return ret;
 }
 
-static struct wif *linux_open(char *iface)
+static struct wif *linux_open(const char *iface)
 {
 	struct wif *wi;
 	struct priv_linux *pl;
@@ -2197,16 +2197,19 @@ static struct wif *linux_open(char *iface)
 	wi->wi_get_mtu		= linux_get_mtu;
 	wi->wi_set_mtu		= linux_set_mtu;
 
+	char * not_const_iface = strdup(iface);
 
-	if (do_linux_open(wi, iface)) {
+	if (do_linux_open(wi, not_const_iface)) {
 		do_free(wi);
+		free(not_const_iface);
 		return NULL;
 	}
 
+	free(not_const_iface);
 	return wi;
 }
 
-struct wif *wi_open_osdep(char *iface)
+struct wif *wi_open_osdep(const char *iface)
 {
         return linux_open(iface);
 }

@@ -35,7 +35,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#include "osdep.h"
+#include "core.h"
 
 struct tip_linux {
 	int		tl_fd;
