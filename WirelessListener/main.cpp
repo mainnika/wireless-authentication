@@ -114,8 +114,9 @@ int parse_packet(unsigned char *h80211, int caplen, struct rx_info *ri, int card
 int main(int argc, char* argv[])
 {
 	google::InitGoogleLogging(argv[0]);
+	google::LogToStderr();
 
-	Server server("eth0,eth1");
+	Server server("mon0");
 
 //	char *iface[MAX_CARDS];
 //	const char *s_iface = "mon0";

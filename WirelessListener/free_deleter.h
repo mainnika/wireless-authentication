@@ -1,7 +1,8 @@
 #pragma once
 #include <cstdlib>
 
+template<typename T = void>
 struct free_delete
 {
-    void operator()(void* x) { free(x); }
+    void operator()(T* x) { free(x); }
 };

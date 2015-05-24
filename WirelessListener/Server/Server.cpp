@@ -52,7 +52,7 @@ void Server::init_cards(std::string cards)
 			continue;
 		}
 
-		LOG(INFO) << "Card " << iface << "initialized";
+		LOG(INFO) << "Card " << iface << " initialized";
 
 		this->cards.emplace_back(new Interface(std::move(wi)));
 	}
