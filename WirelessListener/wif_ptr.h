@@ -7,4 +7,4 @@ extern "C"
 
 #include <memory>
 
-typedef std::unique_ptr<wif, free_delete<wif>> wif_ptr;
+typedef std::unique_ptr<struct wif, free_delete<struct wif>> wif_ptr;

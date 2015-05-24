@@ -11,13 +11,18 @@
 
 #include "free_deleter.h"
 
+#include <ev++.h>
 #include <algorithm>
 #include <glog/logging.h>
 
 Server::Server(std::string cards)
 {
+	LOG(INFO) << "Using libev " << ev::version_major() << "." << ev::version_minor();
+	LOG_ASSERT(ev::recommended_backends() & EVBACKEND_EPOLL);
+
 	this->init_cards(cards);
 
+	LOG_ASSERT(!this->cards.empty());
 	LOG(INFO) << "Server started";
 }
 
@@ -52,9 +57,7 @@ void Server::init_cards(std::string cards)
 			continue;
 		}
 
-		LOG(INFO) << "Card " << iface << " initialized";
-
-		this->cards.emplace_back(new Interface(std::move(wi)));
+		this->cards.emplace_back(new Interface(std::move(wi), iface));
 	}
 
 	free(copy_of_buffer_ptr);
