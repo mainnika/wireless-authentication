@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Thread.h"
+#include "iface_ptr.h"
 
 #include <queue>
 #include <mutex>
@@ -20,14 +21,16 @@ public:
 	Interfaces();
 	virtual ~Interfaces();
 
-	void add(std::unique_ptr<Interface> iface);
+	void add(iface_ptr iface);
 
 private:
 	std::mutex mutex;
-	std::queue<std::unique_ptr<Interface>> not_started;
-	std::vector<std::unique_ptr<Interface>> started;
+	std::queue<iface_ptr> not_started;
+	std::vector<iface_ptr> started;
 
 	virtual void on_notify();
 	virtual void on_start();
+	virtual void on_stop();
+
 
 };

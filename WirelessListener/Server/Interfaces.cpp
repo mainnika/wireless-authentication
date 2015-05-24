@@ -6,7 +6,6 @@
  */
 
 #include "Interfaces.h"
-
 #include "Interface.h"
 
 Interfaces::Interfaces():
@@ -16,7 +15,7 @@ Interfaces::Interfaces():
 Interfaces::~Interfaces()
 {}
 
-void Interfaces::add(std::unique_ptr<Interface> iface)
+void Interfaces::add(iface_ptr iface)
 {
 	std::lock_guard<std::mutex> lock(this->mutex);
 	this->not_started.push(std::move(iface));
@@ -28,10 +27,10 @@ void Interfaces::on_notify()
 	std::lock_guard<std::mutex> lock(this->mutex);
 	while (!this->not_started.empty())
 	{
-		std::unique_ptr<Interface> iface = std::move(this->not_started.front());
+		iface_ptr iface = std::move(this->not_started.front());
 		this->not_started.pop();
 
-		iface->listen(this->get_loop());
+		iface->start(this->get_loop());
 
 		this->started.push_back(std::move(iface));
 	}
@@ -42,3 +41,13 @@ void Interfaces::on_start()
 	this->on_notify();
 }
 
+void Interfaces::on_stop()
+{
+	std::lock_guard<std::mutex> lock(this->mutex);
+
+	while (!this->not_started.empty())
+		this->not_started.pop();
+
+	for (auto &iface : this->started)
+		iface->stop();
+}

@@ -30,7 +30,7 @@ Server::~Server()
 
 void Server::init_cards(std::string cards)
 {
-	std::vector<Interface*> ifaces;
+	std::vector<iface_ptr> ifaces;
 	std::unique_ptr<char, free_delete<char>> buffer(strdup(cards.c_str()));
 	char *str = buffer.get();
 	char *raw;
@@ -39,9 +39,9 @@ void Server::init_cards(std::string cards)
 	{
 		std::string iface(raw);
 
-		auto iter = std::find_if(this->cards.begin(), this->cards.end(), Interface::compare_with(iface));
+		auto iter = std::find_if(ifaces.begin(), ifaces.end(), Interface::compare_with(iface));
 
-		if (iter != this->cards.end())
+		if (iter != ifaces.end())
 		{
 			LOG(WARNING) << "Duplicated initialize for interface " << iface;
 			continue;
@@ -55,11 +55,11 @@ void Server::init_cards(std::string cards)
 			continue;
 		}
 
-		ifaces.push_back(new Interface(std::move(wi), iface));
+		ifaces.emplace_back(new Interface(std::move(wi), iface));
 	}
 
-	for (auto *iface : ifaces)
-		this->ifaces.add(std::unique_ptr<Interface>(iface));
+	for (auto &iface : ifaces)
+		this->ifaces.add(std::move(iface));
 }
 
 void Server::start()

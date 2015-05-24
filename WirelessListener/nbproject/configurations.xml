@@ -43,6 +43,7 @@
     </logicalFolder>
     <logicalFolder name="f2" displayName="Tools" projectFiles="true">
       <itemPath>free_deleter.h</itemPath>
+      <itemPath>iface_ptr.h</itemPath>
       <itemPath>wif_ptr.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -160,6 +161,8 @@
       <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="iface_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -282,6 +285,8 @@
       <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="iface_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

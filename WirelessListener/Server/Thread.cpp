@@ -53,8 +53,8 @@ void Thread::stop()
 	LOG(INFO) << "Thread " << (void*)this << " stopping";
 
 	this->stopped = true;
-
 	this->notifier->send();
+
 	this->join();
 
 	this->thread_id = 0;
@@ -90,6 +90,7 @@ void Thread::notify_handler(ev::async &, int)
 	if (this->stopped)
 	{
 		this->notifier->stop();
+		this->loop->break_loop(ev::ALL);
 		return;
 	}
 

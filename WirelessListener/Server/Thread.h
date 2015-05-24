@@ -2,6 +2,7 @@
 
 #include <pthread.h>
 #include <memory>
+#include <atomic>
 
 namespace ev
 {
@@ -38,7 +39,7 @@ private:
 
 	pthread_t thread_id;
 
-	bool stopped;
+	std::atomic<bool> stopped;
 
 	void notify_handler(ev::async &w, int revents);
 

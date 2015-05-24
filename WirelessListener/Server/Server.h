@@ -28,6 +28,6 @@ public:
 	void stop();
 
 private:
-	std::vector<std::unique_ptr<Interface>> cards;
 	Interfaces ifaces;
+	
 };
