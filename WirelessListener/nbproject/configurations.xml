@@ -38,7 +38,6 @@
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f2" displayName="Tools" projectFiles="true">
-      <itemPath>Tools/easylogging++.h</itemPath>
       <itemPath>free_deleter.h</itemPath>
       <itemPath>wif_ptr.h</itemPath>
     </logicalFolder>
@@ -76,6 +75,7 @@
             <pElem>Core</pElem>
             <pElem>Server</pElem>
             <pElem>Tools</pElem>
+            <pElem>${HOME}/.lib/glog/include</pElem>
             <pElem>${HOME}/.lib/libev/include</pElem>
           </incDir>
           <commandLine>-fsanitize=address -fno-omit-frame-pointer</commandLine>
@@ -83,11 +83,13 @@
         </ccTool>
         <linkerTool>
           <linkerAddLib>
+            <pElem>${HOME}/.lib/glog/lib</pElem>
             <pElem>${HOME}/.lib/libev/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>pcap</linkerLibLibItem>
             <linkerLibLibItem>ev</linkerLibLibItem>
+            <linkerLibLibItem>glog</linkerLibLibItem>
           </linkerLibItems>
           <commandLine>-fsanitize=address</commandLine>
         </linkerTool>
@@ -146,8 +148,6 @@
       </item>
       <item path="Server/Server.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Tools/easylogging++.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
@@ -165,7 +165,12 @@
         <cTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>/home/mainnika/.lib_mips/pcap/include</pElem>
+            <pElem>.</pElem>
+            <pElem>Core</pElem>
+            <pElem>Server</pElem>
+            <pElem>Tools</pElem>
+            <pElem>${HOME}/.lib_mips/libev/include</pElem>
+            <pElem>${HOME}/.lib_mips/pcap/include</pElem>
           </incDir>
           <warningLevel>3</warningLevel>
         </cTool>
@@ -173,7 +178,13 @@
           <developmentMode>5</developmentMode>
           <standard>8</standard>
           <incDir>
-            <pElem>/home/mainnika/.lib_mips/pcap/include</pElem>
+            <pElem>.</pElem>
+            <pElem>Core</pElem>
+            <pElem>Server</pElem>
+            <pElem>Tools</pElem>
+            <pElem>${HOME}/.lib_mips/libev/include</pElem>
+            <pElem>${HOME}/.lib_mips/glog/include</pElem>
+            <pElem>${HOME}/.lib_mips/pcap/include</pElem>
           </incDir>
           <warningLevel>3</warningLevel>
         </ccTool>
@@ -185,12 +196,17 @@
         </asmTool>
         <linkerTool>
           <linkerAddLib>
-            <pElem>/home/mainnika/.lib_mips/pcap/lib</pElem>
+            <pElem>${HOME}/.lib_mips/libev/lib</pElem>
+            <pElem>${HOME}/.lib_mips/glog/lib</pElem>
+            <pElem>${HOME}/.lib_mips/pcap/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
             <linkerLibLibItem>pcap</linkerLibLibItem>
+            <linkerLibLibItem>ev</linkerLibLibItem>
+            <linkerLibLibItem>glog</linkerLibLibItem>
           </linkerLibItems>
-          <commandLine>-static</commandLine>
+          <commandLine>-static -pthread</commandLine>
         </linkerTool>
       </compileType>
       <item path="Core/airpcap.c" ex="false" tool="0" flavor2="0">
@@ -246,8 +262,6 @@
       <item path="Server/Server.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Server/Server.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Tools/easylogging++.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>

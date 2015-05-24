@@ -10,7 +10,9 @@
 #include "Interface.h"
 
 #include "free_deleter.h"
-#include "easylogging++.h"
+
+#include <algorithm>
+#include <glog/logging.h>
 
 Server::Server(std::string cards)
 {

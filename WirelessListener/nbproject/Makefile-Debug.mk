@@ -62,7 +62,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L${HOME}/.lib/libev/lib -lpcap -lev
+LDLIBSOPTIONS=-L${HOME}/.lib/glog/lib -L${HOME}/.lib/libev/lib -lpcap -lev -lglog
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -115,17 +115,17 @@ ${OBJECTDIR}/Core/radiotap/radiotap.o: Core/radiotap/radiotap.c
 ${OBJECTDIR}/Server/Interface.o: Server/Interface.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Server
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interface.o Server/Interface.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interface.o Server/Interface.cpp
 
 ${OBJECTDIR}/Server/Server.o: Server/Server.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Server
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Server.o Server/Server.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Server.o Server/Server.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

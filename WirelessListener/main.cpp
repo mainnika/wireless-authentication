@@ -8,7 +8,7 @@
 
 #include "Server.h"
 
-#include "easylogging++.h"
+#include <glog/logging.h>
 
 extern "C"
 {
@@ -16,8 +16,6 @@ extern "C"
 #include "common.h"
 #include "pcap.h"
 }
-
-INITIALIZE_EASYLOGGINGPP
 
 #define MAX_CARDS 8
 #define REFRESH_RATE 100000  /* default delay in us between updates */
@@ -113,8 +111,9 @@ int parse_packet(unsigned char *h80211, int caplen, struct rx_info *ri, int card
 	return 0;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+	google::InitGoogleLogging(argv[0]);
 
 	Server server("eth0,eth1");
 
