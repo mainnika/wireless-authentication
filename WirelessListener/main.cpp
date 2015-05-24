@@ -142,7 +142,24 @@ int main(int argc, char* argv[])
 	LOG(INFO) << "Using libev " << ev::version_major() << "." << ev::version_minor();
 	LOG_ASSERT(ev::recommended_backends() & EVBACKEND_EPOLL);
 
-	Server server("mon0");
+	std::string iface = "mon0";
+
+	char opt;
+	while ((opt = getopt(argc, argv, "i")) != -1)
+	{
+		switch (opt)
+		{
+			case 'i':
+				iface.assign(optarg);
+				break;
+			default:
+				LOG(ERROR) << "Invalid usage";
+				return -1;
+		}
+	}
+
+
+	Server server(iface);
 	server.start();
 
 	ev::loop_ref loop = ev::get_default_loop();
@@ -158,55 +175,6 @@ int main(int argc, char* argv[])
 	loop.run(0);
 
 	server.stop();
-
-//	char *iface[MAX_CARDS];
-//	const char *s_iface = "mon0";
-//	fd_set rfds;
-//	int caplen = 0, i, fdh = 0;
-//	int fd_raw[MAX_CARDS];
-//	int num_cards = 0;
-//	struct timeval tv0;
-//	struct rx_info ri;
-//	struct wif * wi[MAX_CARDS];
-//	unsigned char buffer[4096];
-//
-//	srand(time(NULL));
-//
-//	std::fill_n(fd_raw, MAX_CARDS, -1);
-//	tv0.tv_sec = 0;
-//	tv0.tv_usec = REFRESH_RATE;
-//	FD_ZERO(&rfds);
-//
-//	num_cards = init_cards(s_iface, iface, wi);
-//	for (i = 0; i < num_cards; i++)
-//	{
-//		fd_raw[i] = wi_fd(wi[i]);
-//		if (fd_raw[i] > fdh)
-//			fdh = fd_raw[i];
-//
-//		FD_SET(fd_raw[i], &rfds);
-//	}
-//
-//	if (select(fdh + 1, &rfds, NULL, NULL, &tv0) < 0)
-//	{
-//		LOG(ERROR) << "Error select()";
-//		return ( 1);
-//	}
-//
-//	for (i = 0; i < num_cards; i++)
-//	{
-//		if (!FD_ISSET(fd_raw[i], &rfds))
-//			continue;
-//
-//		memset(buffer, 0, sizeof (buffer));
-//		if ((caplen = wi_read(wi[i], buffer, sizeof (buffer), &ri)) == -1)
-//		{
-//			LOG(ERROR) << "Error wi_read() from " << iface[i];
-//			return ( 2);
-//		}
-//
-//		parse_packet(buffer, caplen, &ri, i);
-//	}
 
 	LOG(INFO) << "Done";
 }
