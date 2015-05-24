@@ -14,6 +14,14 @@ CND_ARTIFACT_PATH_Debug=dist/Debug/CLang-Linux-x86/wirelesslistener
 CND_PACKAGE_DIR_Debug=dist/Debug/CLang-Linux-x86/package
 CND_PACKAGE_NAME_Debug=wirelesslistener.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/CLang-Linux-x86/package/wirelesslistener.tar
+# Debug_netbook configuration
+CND_PLATFORM_Debug_netbook=CLang-Linux-x86
+CND_ARTIFACT_DIR_Debug_netbook=dist/Debug_netbook/CLang-Linux-x86
+CND_ARTIFACT_NAME_Debug_netbook=wirelesslistener
+CND_ARTIFACT_PATH_Debug_netbook=dist/Debug_netbook/CLang-Linux-x86/wirelesslistener
+CND_PACKAGE_DIR_Debug_netbook=dist/Debug_netbook/CLang-Linux-x86/package
+CND_PACKAGE_NAME_Debug_netbook=wirelesslistener.tar
+CND_PACKAGE_PATH_Debug_netbook=dist/Debug_netbook/CLang-Linux-x86/package/wirelesslistener.tar
 # Release configuration
 CND_PLATFORM_Release=MIPSEL-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/MIPSEL-Linux-x86

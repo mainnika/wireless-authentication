@@ -169,6 +169,118 @@
       <item path="wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
+    <conf name="Debug_netbook" type="1">
+      <toolsSet>
+        <compilerSet>CLang|CLang</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>Core</pElem>
+            <pElem>Server</pElem>
+            <pElem>Tools</pElem>
+            <pElem>${HOME}/.lib/libev/include</pElem>
+          </incDir>
+          <commandLine>-fsanitize=address -fno-omit-frame-pointer</commandLine>
+          <warningLevel>3</warningLevel>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>Core</pElem>
+            <pElem>Server</pElem>
+            <pElem>Tools</pElem>
+            <pElem>${HOME}/.lib/libev/include</pElem>
+          </incDir>
+          <commandLine>-std=c++1y -fsanitize=address -fno-omit-frame-pointer</commandLine>
+          <warningLevel>3</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>${HOME}/.lib/libev/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>pcap</linkerLibLibItem>
+            <linkerLibLibItem>ev</linkerLibLibItem>
+            <linkerLibLibItem>glog</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-fsanitize=address</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Core/airpcap.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/airpcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/byteorder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/common.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/core.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/core.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/crctable_osdep.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/file.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/ieee80211.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/if_arp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/if_llc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/linux.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/linux_tap.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/network.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/network.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/packed.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/pcap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/radiotap/platform.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/radiotap/radiotap.c" ex="false" tool="0" flavor2="9">
+      </item>
+      <item path="Core/radiotap/radiotap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Core/radiotap/radiotap_iter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Server/Interface.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Server/Interface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Server/Interfaces.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Server/Interfaces.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Server/Server.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Server/Server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Server/Thread.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="iface_ptr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="wif_ptr.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
     <conf name="Release" type="1">
       <toolsSet>
         <compilerSet>MIPSEL|GNU</compilerSet>

@@ -33,7 +33,6 @@ Interface::Interface(wif_ptr wi, std::string iface) :
 
 Interface::~Interface()
 {
-	wi_close(this->wi.get());
 	LOG(INFO) << "Interface " << this->iface << " closed";
 }
 
