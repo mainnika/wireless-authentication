@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 	std::string iface = "mon0";
 
 	char opt;
-	while ((opt = getopt(argc, argv, "i")) != -1)
+	while ((opt = getopt(argc, argv, "i:")) != -1)
 	{
 		switch (opt)
 		{
