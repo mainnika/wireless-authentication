@@ -43,8 +43,8 @@ void Interface::listen(struct ev_loop *loop)
 	this->watcher_write->set(loop);
 	this->notifier_write->set(loop);
 
-	this->watcher_read->set(this->fd, EV_READ);
-	this->watcher_write->set(this->fd, EV_WRITE);
+	this->watcher_read->start(this->fd, EV_READ);
+	this->watcher_write->start(this->fd, EV_WRITE);
 
 	LOG(INFO) << "Interface " << this->iface << " started";
 }
@@ -59,15 +59,15 @@ std::function<bool(std::unique_ptr<Interface>&) > Interface::compare_with(std::s
 
 void Interface::on_read(ev::io& w, int revets)
 {
-
+	LOG(INFO) << "Interface " << this->iface << " on_read()";
 }
 
 void Interface::on_write(ev::io& w, int revets)
 {
-
+	LOG(INFO) << "Interface " << this->iface << " on_write()";
 }
 
 void Interface::on_notify(ev::async& w, int revets)
 {
-
+	LOG(INFO) << "Interface " << this->iface << " on_notify()";
 }

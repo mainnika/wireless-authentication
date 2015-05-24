@@ -8,6 +8,7 @@
 
 #include "Server.h"
 
+#include <ev++.h>
 #include <glog/logging.h>
 
 extern "C"
@@ -111,12 +112,52 @@ int parse_packet(unsigned char *h80211, int caplen, struct rx_info *ri, int card
 	return 0;
 }
 
+void on_shutdown(ev::sig &w, int)
+{
+	w.loop.break_loop(ev::ALL);
+}
+
+class Test : public Thread
+{
+public:
+	Test():
+		Thread()
+	{};
+	virtual ~Test()
+	{}
+
+private:
+	virtual void on_notify()
+	{
+		LOG(INFO) << "notify";
+	}
+
+};
+
 int main(int argc, char* argv[])
 {
 	google::InitGoogleLogging(argv[0]);
 	google::LogToStderr();
 
+	LOG(INFO) << "Using libev " << ev::version_major() << "." << ev::version_minor();
+	LOG_ASSERT(ev::recommended_backends() & EVBACKEND_EPOLL);
+
 	Server server("mon0");
+	server.start();
+
+	ev::loop_ref loop = ev::get_default_loop();
+
+	ev::sig signal_watcher_int(loop);
+	signal_watcher_int.set<on_shutdown>();
+	signal_watcher_int.start(SIGINT);
+
+	ev::sig signal_watcher_term(loop);
+	signal_watcher_term.set<on_shutdown>();
+	signal_watcher_term.start(SIGTERM);
+
+	loop.run(0);
+
+	server.stop();
 
 //	char *iface[MAX_CARDS];
 //	const char *s_iface = "mon0";

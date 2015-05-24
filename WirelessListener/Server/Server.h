@@ -8,14 +8,14 @@
 #include <memory>
 #include <vector>
 
+#include "Interfaces.h"
+
 #include "wif_ptr.h"
 
 extern "C"
 {
 #include "core.h"
 }
-
-class Interface;
 
 class Server
 {
@@ -24,8 +24,10 @@ public:
 	virtual ~Server();
 
 	void init_cards(std::string cards);
+	void start();
+	void stop();
 
 private:
 	std::vector<std::unique_ptr<Interface>> cards;
-
+	Interfaces ifaces;
 };

@@ -31,8 +31,12 @@
     <logicalFolder name="f1" displayName="Server" projectFiles="true">
       <itemPath>Server/Interface.cpp</itemPath>
       <itemPath>Server/Interface.h</itemPath>
+      <itemPath>Server/Interfaces.cpp</itemPath>
+      <itemPath>Server/Interfaces.h</itemPath>
       <itemPath>Server/Server.cpp</itemPath>
       <itemPath>Server/Server.h</itemPath>
+      <itemPath>Server/Thread.cpp</itemPath>
+      <itemPath>Server/Thread.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="Source" projectFiles="true">
       <itemPath>main.cpp</itemPath>
@@ -69,7 +73,6 @@
           <warningLevel>3</warningLevel>
         </cTool>
         <ccTool>
-          <standard>8</standard>
           <incDir>
             <pElem>.</pElem>
             <pElem>Core</pElem>
@@ -78,7 +81,7 @@
             <pElem>${HOME}/.lib/glog/include</pElem>
             <pElem>${HOME}/.lib/libev/include</pElem>
           </incDir>
-          <commandLine>-fsanitize=address -fno-omit-frame-pointer</commandLine>
+          <commandLine>-std=c++1y -fsanitize=address -fno-omit-frame-pointer</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <linkerTool>
@@ -144,9 +147,17 @@
       </item>
       <item path="Server/Interface.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Server/Interfaces.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Server/Interfaces.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Server/Server.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Server/Server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Server/Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -176,7 +187,6 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
-          <standard>8</standard>
           <incDir>
             <pElem>.</pElem>
             <pElem>Core</pElem>
@@ -186,6 +196,7 @@
             <pElem>${HOME}/.lib_mips/glog/include</pElem>
             <pElem>${HOME}/.lib_mips/pcap/include</pElem>
           </incDir>
+          <commandLine>-std=c++1y -pthread -Wl,--no-as-needed</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -201,12 +212,11 @@
             <pElem>${HOME}/.lib_mips/pcap/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
-            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
             <linkerLibLibItem>pcap</linkerLibLibItem>
             <linkerLibLibItem>ev</linkerLibLibItem>
             <linkerLibLibItem>glog</linkerLibLibItem>
           </linkerLibItems>
-          <commandLine>-static -pthread</commandLine>
+          <commandLine>-static -pthread -Wl,--no-as-needed</commandLine>
         </linkerTool>
       </compileType>
       <item path="Core/airpcap.c" ex="false" tool="0" flavor2="0">
@@ -259,9 +269,17 @@
       </item>
       <item path="Server/Interface.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Server/Interfaces.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Server/Interfaces.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Server/Server.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Server/Server.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Server/Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>
