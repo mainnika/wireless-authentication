@@ -42,9 +42,9 @@
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f2" displayName="Tools" projectFiles="true">
-      <itemPath>free_deleter.h</itemPath>
-      <itemPath>iface_ptr.h</itemPath>
-      <itemPath>wif_ptr.h</itemPath>
+      <itemPath>Tools/free_deleter.h</itemPath>
+      <itemPath>Tools/iface_ptr.h</itemPath>
+      <itemPath>Tools/wif_ptr.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important"
@@ -160,13 +160,13 @@
       </item>
       <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
+      <item path="Tools/free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="iface_ptr.h" ex="false" tool="3" flavor2="0">
+      <item path="Tools/iface_ptr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Tools/wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Debug_netbook" type="1">
@@ -272,13 +272,13 @@
       </item>
       <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
+      <item path="Tools/free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="iface_ptr.h" ex="false" tool="3" flavor2="0">
+      <item path="Tools/iface_ptr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Tools/wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="9">
-      </item>
-      <item path="wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -396,13 +396,13 @@
       </item>
       <item path="Server/Thread.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="free_deleter.h" ex="false" tool="3" flavor2="0">
+      <item path="Tools/free_deleter.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="iface_ptr.h" ex="false" tool="3" flavor2="0">
+      <item path="Tools/iface_ptr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Tools/wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="wif_ptr.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
