@@ -32,7 +32,7 @@
 #include <fcntl.h>
 #include <err.h>
 
-#include "osdep.h"
+#include "core.h"
 #include "pcap.h"
 #include "radiotap/radiotap_iter.h"
 
@@ -110,7 +110,7 @@ static int file_read(struct wif *wi, unsigned char *h80211, int len,
 		/* for a while Kismet logged broken PPI headers */
                 if (off == 24 && le16_to_cpu(*(unsigned short *)(buf + 8)) == 2 )
 			off = 32;
-		
+
 		break;
 
 	case LINKTYPE_ETHERNET:
@@ -208,7 +208,7 @@ static int file_fd(struct wif *wi)
 	return pf->pf_fd;
 }
 
-struct wif *file_open(char *iface)
+struct wif *file_open(const char *iface)
 {
 	struct wif *wi;
 	struct priv_file *pf;

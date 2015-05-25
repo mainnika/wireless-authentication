@@ -30,7 +30,7 @@
 #include <sys/select.h>
 #include <errno.h>
 
-#include "osdep.h"
+#include "core.h"
 #include "network.h"
 
 #define QUEUE_MAX 666
@@ -407,7 +407,7 @@ static void net_close(struct wif *wi)
 	do_net_free(wi);
 }
 
-static int get_ip_port(char *iface, char *ip, const int ipsize)
+static int get_ip_port(const char *iface, char *ip, const int ipsize)
 {
 	char *host;
 	char *ptr;
@@ -443,7 +443,7 @@ static int handshake(int s)
 	return 0;
 }
 
-static int do_net_open(char *iface)
+static int do_net_open(const char *iface)
 {
 	int s, port;
 	char ip[16];
@@ -491,7 +491,7 @@ static int net_fd(struct wif *wi)
 	return pn->pn_s;
 }
 
-struct wif *net_open(char *iface)
+struct wif *net_open(const char *iface)
 {
 	struct wif *wi;
 	struct priv_net *pn;

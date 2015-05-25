@@ -35,23 +35,27 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/osdep/airpcap.o \
-	${OBJECTDIR}/osdep/common.o \
-	${OBJECTDIR}/osdep/file.o \
-	${OBJECTDIR}/osdep/linux.o \
-	${OBJECTDIR}/osdep/linux_tap.o \
-	${OBJECTDIR}/osdep/network.o \
-	${OBJECTDIR}/osdep/osdep.o \
-	${OBJECTDIR}/radiotap/radiotap.o
+	${OBJECTDIR}/Core/airpcap.o \
+	${OBJECTDIR}/Core/common.o \
+	${OBJECTDIR}/Core/core.o \
+	${OBJECTDIR}/Core/file.o \
+	${OBJECTDIR}/Core/linux.o \
+	${OBJECTDIR}/Core/linux_tap.o \
+	${OBJECTDIR}/Core/network.o \
+	${OBJECTDIR}/Core/radiotap/radiotap.o \
+	${OBJECTDIR}/Server/Interface.o \
+	${OBJECTDIR}/Server/Interfaces.o \
+	${OBJECTDIR}/Server/Server.o \
+	${OBJECTDIR}/Server/Thread.o \
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-std=c++1y -pthread -Wl,--no-as-needed
+CXXFLAGS=-std=c++1y -pthread -Wl,--no-as-needed
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -60,7 +64,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/home/mainnika/.lib_mips/pcap/lib -lpcap
+LDLIBSOPTIONS=-L${HOME}/.lib_mips/libev/lib -L${HOME}/.lib_mips/glog/lib -L${HOME}/.lib_mips/pcap/lib -lpcap -lev -lglog
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -68,52 +72,72 @@ LDLIBSOPTIONS=-L/home/mainnika/.lib_mips/pcap/lib -lpcap
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/wirelessspammer: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/wirelessspammer ${OBJECTFILES} ${LDLIBSOPTIONS} -static
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/wirelessspammer ${OBJECTFILES} ${LDLIBSOPTIONS} -static -pthread -Wl,--no-as-needed
+
+${OBJECTDIR}/Core/airpcap.o: Core/airpcap.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/airpcap.o Core/airpcap.c
+
+${OBJECTDIR}/Core/common.o: Core/common.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/common.o Core/common.c
+
+${OBJECTDIR}/Core/core.o: Core/core.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/core.o Core/core.c
+
+${OBJECTDIR}/Core/file.o: Core/file.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/file.o Core/file.c
+
+${OBJECTDIR}/Core/linux.o: Core/linux.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/linux.o Core/linux.c
+
+${OBJECTDIR}/Core/linux_tap.o: Core/linux_tap.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/linux_tap.o Core/linux_tap.c
+
+${OBJECTDIR}/Core/network.o: Core/network.c 
+	${MKDIR} -p ${OBJECTDIR}/Core
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/network.o Core/network.c
+
+${OBJECTDIR}/Core/radiotap/radiotap.o: Core/radiotap/radiotap.c 
+	${MKDIR} -p ${OBJECTDIR}/Core/radiotap
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Core/radiotap/radiotap.o Core/radiotap/radiotap.c
+
+${OBJECTDIR}/Server/Interface.o: Server/Interface.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Server
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/glog/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interface.o Server/Interface.cpp
+
+${OBJECTDIR}/Server/Interfaces.o: Server/Interfaces.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Server
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/glog/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interfaces.o Server/Interfaces.cpp
+
+${OBJECTDIR}/Server/Server.o: Server/Server.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Server
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/glog/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Server.o Server/Server.cpp
+
+${OBJECTDIR}/Server/Thread.o: Server/Thread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Server
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/glog/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Thread.o Server/Thread.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
-
-${OBJECTDIR}/osdep/airpcap.o: osdep/airpcap.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/airpcap.o osdep/airpcap.c
-
-${OBJECTDIR}/osdep/common.o: osdep/common.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/common.o osdep/common.c
-
-${OBJECTDIR}/osdep/file.o: osdep/file.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/file.o osdep/file.c
-
-${OBJECTDIR}/osdep/linux.o: osdep/linux.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/linux.o osdep/linux.c
-
-${OBJECTDIR}/osdep/linux_tap.o: osdep/linux_tap.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/linux_tap.o osdep/linux_tap.c
-
-${OBJECTDIR}/osdep/network.o: osdep/network.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/network.o osdep/network.c
-
-${OBJECTDIR}/osdep/osdep.o: osdep/osdep.c 
-	${MKDIR} -p ${OBJECTDIR}/osdep
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/osdep/osdep.o osdep/osdep.c
-
-${OBJECTDIR}/radiotap/radiotap.o: radiotap/radiotap.c 
-	${MKDIR} -p ${OBJECTDIR}/radiotap
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -Werror -I/home/mainnika/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/radiotap/radiotap.o radiotap/radiotap.c
+	$(COMPILE.cc) -O2 -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib_mips/libev/include -I${HOME}/.lib_mips/glog/include -I${HOME}/.lib_mips/pcap/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

@@ -22,10 +22,10 @@
 #include <assert.h>
 #include <string.h>
 
-#include "osdep.h"
+#include "core.h"
 #include "network.h"
 
-extern struct wif *file_open(char *iface);
+extern struct wif *file_open(const char *iface);
 
 int wi_read(struct wif *wi, unsigned char *h80211, int len, struct rx_info *ri)
 {
@@ -150,7 +150,7 @@ int wi_set_mtu(struct wif *wi, int mtu)
 	return wi->wi_set_mtu(wi, mtu);
 }
 
-struct wif *wi_open(char *iface)
+struct wif *wi_open(const char *iface)
 {
 	struct wif *wi;
 

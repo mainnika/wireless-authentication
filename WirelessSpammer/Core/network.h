@@ -11,7 +11,7 @@
 #include <inttypes.h>
 #include <sys/types.h>
 
-#include "osdep.h"
+#include "core.h"
 
 enum {
 	NET_RC = 1,
@@ -32,7 +32,7 @@ struct net_hdr {
 	uint8_t		nh_data[0];
 } __packed;
 
-extern struct wif *net_open(char *iface);
+extern struct wif *net_open(const char *iface);
 extern int net_send(int s, int command, void *arg, int len);
 extern int net_read_exact(int s, void *arg, int len);
 extern int net_get(int s, void *arg, int *len);

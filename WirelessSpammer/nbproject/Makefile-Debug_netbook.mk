@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=CLang-Linux-x86
 CND_DLIB_EXT=so
-CND_CONF=Debug
+CND_CONF=Debug_netbook
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -64,7 +64,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L${HOME}/.lib/glog/lib -L${HOME}/.lib/libev/lib -lpcap -lev -lglog
+LDLIBSOPTIONS=-L${HOME}/.lib/libev/lib -lpcap -lev -lglog
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -117,27 +117,27 @@ ${OBJECTDIR}/Core/radiotap/radiotap.o: Core/radiotap/radiotap.c
 ${OBJECTDIR}/Server/Interface.o: Server/Interface.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Server
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interface.o Server/Interface.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interface.o Server/Interface.cpp
 
 ${OBJECTDIR}/Server/Interfaces.o: Server/Interfaces.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Server
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interfaces.o Server/Interfaces.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Interfaces.o Server/Interfaces.cpp
 
 ${OBJECTDIR}/Server/Server.o: Server/Server.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Server
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Server.o Server/Server.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Server.o Server/Server.cpp
 
 ${OBJECTDIR}/Server/Thread.o: Server/Thread.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Server
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Thread.o Server/Thread.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Server/Thread.o Server/Thread.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/glog/include -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Werror -I. -ICore -IServer -ITools -I${HOME}/.lib/libev/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

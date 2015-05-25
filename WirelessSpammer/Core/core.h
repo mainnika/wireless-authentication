@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2007, 2008, Andrea Bittau <a.bittau@cs.ucl.ac.uk>
  * All OS dependent crap should go here.
  *
@@ -46,7 +46,7 @@
  */
 
 struct tx_info {
-        unsigned int     ti_rate;
+        unsigned int ti_rate;
 };
 
 struct rx_info {
@@ -88,7 +88,7 @@ struct wif {
 };
 
 /* Routines to be used by client code */
-extern struct wif *wi_open(char *iface);
+extern struct wif *wi_open(const char *iface);
 extern int wi_read(struct wif *wi, unsigned char *h80211, int len,
 		   struct rx_info *ri);
 extern int wi_write(struct wif *wi, unsigned char *h80211, int len,
@@ -110,7 +110,7 @@ extern int wi_set_mtu(struct wif *wi, int mtu);
 /* wi_open_osdep should determine the type of card and setup the wif structure
  * appropriately.  There is one per OS.  Called by wi_open.
  */
-extern struct wif *wi_open_osdep(char *iface);
+extern struct wif *wi_open_osdep(const char *iface);
 
 /* This will return the FD used for reading.  This is required for using select
  * on it.
