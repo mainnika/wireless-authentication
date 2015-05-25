@@ -77,14 +77,11 @@ void Interface::on_read(ev::io& w, int revets)
 	if (this->stopped || caplen <= 0)
 		return;
 
-	if (caplen < 24)
-	{
-		LOG(INFO) << "Capped unknow packet with len " << caplen;
-		return;
-	}
-
 	uint32_t type = buffer[0];
 	uint32_t subtype = buffer[1];
+
+	if (type != 0xDD)
+		return;
 
 	LOG(INFO) << "Capped packet with type " << std::hex << type << " and len " << std::dec << caplen;
 }
