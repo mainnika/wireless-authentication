@@ -3,3 +3,6 @@ WirelessListener/nbproject/*.bash
 WirelessListener/nbproject/private/
 WirelessSpammer/nbproject/private/
 WirelessSpammer/nbproject/*.bash
+LogonProvider/x64/
+*.sdf
+*.suo
