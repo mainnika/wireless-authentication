@@ -20,6 +20,9 @@
     <ClCompile Include="guid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="alloc_buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dll.h">
@@ -32,6 +35,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="easylogging++.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="alloc_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array_deleter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="free_deleter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

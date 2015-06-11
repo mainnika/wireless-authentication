@@ -16,6 +16,8 @@
 #include <security.h>
 #include <intsafe.h>
 
+#define _WINSOCKAPI_
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <strsafe.h>
 

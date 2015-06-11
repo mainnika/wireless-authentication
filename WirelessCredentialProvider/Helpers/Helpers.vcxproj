@@ -51,10 +51,11 @@
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Users\mainn_000\Develop\libuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -63,13 +64,17 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="alloc_buffer.cpp" />
     <ClCompile Include="Dll.cpp" />
     <ClCompile Include="guid.cpp" />
     <ClCompile Include="helpers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="alloc_buffer.h" />
+    <ClInclude Include="array_deleter.h" />
     <ClInclude Include="Dll.h" />
     <ClInclude Include="easylogging++.h" />
+    <ClInclude Include="free_deleter.h" />
     <ClInclude Include="guid.h" />
     <ClInclude Include="helpers.h" />
   </ItemGroup>

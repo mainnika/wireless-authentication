@@ -1,7 +1,7 @@
+#include "CommandWindow.h"
 #include "CSampleProvider.h"
 #include "CSampleCredential.h"
 #include "MessageCredential.h"
-#include "CommandWindow.h"
 
 #include <Dll.h>
 #include <helpers.h>

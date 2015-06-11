@@ -316,6 +316,7 @@
 #   include <sys/time.h>
 #elif ELPP_OS_WINDOWS
 #   include <direct.h>
+#define WIN32_LEAN_AND_MEAN
 #   include <windows.h>
 #   if defined(WIN32_LEAN_AND_MEAN)
 #      if defined(ELPP_WINSOCK2)

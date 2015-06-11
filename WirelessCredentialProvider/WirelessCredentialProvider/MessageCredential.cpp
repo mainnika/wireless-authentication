@@ -1,7 +1,6 @@
 #include "MessageCredential.h"
 
 #include <Dll.h>
-#include <Windows.h>
 #include <helpers.h>
 
 CMessageCredential::CMessageCredential():
