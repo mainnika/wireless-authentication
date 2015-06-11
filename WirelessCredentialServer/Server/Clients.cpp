@@ -46,6 +46,8 @@ void Clients::on_notify()
 		stream->loop = &this->get_loop();
 		uv_read_start(stream, &alloc_buffer, &TcpClient::on_segment);
 
+		available->handle_connection();
+
 		LOG(INFO) << "Client " << static_cast<void*>(stream->data) << " connected";
 	}
 }

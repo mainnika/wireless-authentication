@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Client.h"
+#include "ThreadedClient.h"
 
 class CSampleProvider;
 
@@ -25,4 +25,5 @@ private:
     HWND                        _hWndButton;       // Handle to our window's button.
     HINSTANCE                   _hInst;            // Current instance
     BOOL                        _fConnected;       // Whether or not we're connected.
+	ThreadedClient				_client;
 };

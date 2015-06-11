@@ -54,6 +54,8 @@ HRESULT CCommandWindow::Initialize(__in CSampleProvider *pProvider)
         hr = HRESULT_FROM_WIN32(GetLastError());
     }
 
+	this->_client.start();
+
     return hr;
 }
 

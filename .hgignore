@@ -12,3 +12,6 @@ WirelessCredentialProvider/Helpers/x64/
 WirelessCredentialProvider/Helpers/Debug/
 WirelessCredentialProvider/Win32/
 WirelessCredentialProvider/WirelessCredentialProvider/Debug/
+*.log
+WirelessCredentialProvider/Test/Debug/
+WirelessCredentialProvider/Test/x64/

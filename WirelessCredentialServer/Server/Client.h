@@ -10,4 +10,7 @@ public:
 
 	void on_hello(packets::Hello &packet);
 	void on_test(packets::Test &packet);
+
+	virtual void handle_connection();
+
 };

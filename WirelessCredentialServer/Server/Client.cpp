@@ -24,3 +24,8 @@ void Client::on_test(packets::Test& packet)
 {
 	LOG(INFO) << "WOW TEST" << packet.hello();
 }
+
+void Client::handle_connection()
+{
+	LOG(INFO) << "CONNECTED";
+}

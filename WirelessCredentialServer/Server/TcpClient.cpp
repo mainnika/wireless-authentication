@@ -4,6 +4,7 @@
 
 #include <easylogging++.h>
 #include <array_deleter.h>
+#include <alloc_buffer.h>
 
 #include <cstdlib>
 #include <memory>
@@ -30,16 +31,19 @@ void TcpClient::connect(uv_loop_t *loop, TcpClient *client, std::string host, in
 	uv_tcp_init(loop, socket);
 	uv_ip4_addr(host.c_str(), port, &dest);
 
-	connect->data = client;
+	socket->data = client;
 
 	uv_tcp_connect(connect, socket, (const struct sockaddr*)&dest, &TcpClient::on_connect);
 }
 
 void TcpClient::on_connect(uv_connect_t *connection, int status)
 {
-	TcpClient *client = static_cast<TcpClient*>(connection->data);
+	TcpClient *client = static_cast<TcpClient*>(connection->handle->data);
 
 	client->socket = reinterpret_cast<uv_tcp_t*>(connection->handle);
+
+	uv_read_start(connection->handle, &alloc_buffer, &TcpClient::on_segment);
+
 	client->handle_connection();
 }
 
