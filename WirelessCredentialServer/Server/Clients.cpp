@@ -1,7 +1,7 @@
 #include "Clients.h"
 #include "Client.h"
 
-#include "tools/easylogging++.h"
+#include "easylogging++.h"
 #include "tools/alloc_buffer.h"
 
 Clients::Clients()

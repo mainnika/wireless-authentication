@@ -1,7 +1,7 @@
 #include "TcpServer.h"
 #include "Server.h"
 
-#include "tools/easylogging++.h"
+#include "easylogging++.h"
 
 #include <stdlib.h>
 #include <stdio.h>

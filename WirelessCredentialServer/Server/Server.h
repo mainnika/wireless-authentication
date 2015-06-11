@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Accounts.h"
 #include "Clients.h"
 #include "TcpServer.h"
 #include "UdpServer.h"
@@ -16,6 +17,7 @@ private:
 	static Server *instance;
 
 public:
+	Accounts accounts;
 	TcpServer tcp;
 	UdpServer udp;
 	Clients clients;

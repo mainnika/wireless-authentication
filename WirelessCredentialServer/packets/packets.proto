@@ -3,23 +3,39 @@ package packets;
 enum ID {
 	INVALID = 0;
 	HELLO = 1;
-	TEST = 2;
-}
-
-message Packet {
-	optional ID id = 1 [default = INVALID];
+	AUTH_TRY = 2;
+	AUTH_STATUS = 3;
+	ACCOUNT_REQUEST = 4;
+	ACCOUNT_RESPONSE = 5;
 }
 
 message Hello {
 	optional ID id = 1 [default = HELLO];
-
-	required string name = 2;
 }
 
-message Test {
-	optional ID id = 1 [default = TEST];
+message AuthorizeTry {
+	optional ID id = 1 [default = AUTH_TRY];
 
-	required int32 some = 2;
-	required string hello = 3;
+	required string key = 2;
+}
 
+message AuthorizeStatus {
+	optional ID id = 1 [default = AUTH_STATUS];
+
+	enum Status {
+		BLOCKED = 0;
+		ALLOWED = 1;
+	}
+
+	required Status status = 2;
+}
+
+message AccountRequest {
+	optional ID id = 1 [default = ACCOUNT_REQUEST];
+}
+
+message AccountResponse {
+	optional ID id = 1 [default = ACCOUNT_RESPONSE];
+
+	optional string account = 2;
 }

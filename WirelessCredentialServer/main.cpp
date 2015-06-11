@@ -2,7 +2,7 @@
 #include "Thread.h"
 #include "Config.h"
 
-#include "tools/easylogging++.h"
+#include "easylogging++.h"
 
 #include <google/protobuf/stubs/common.h>
 

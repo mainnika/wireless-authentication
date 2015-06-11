@@ -1,6 +1,6 @@
 #include "Thread.h"
 
-#include "tools/easylogging++.h"
+#include "easylogging++.h"
 
 #include <iostream>
 

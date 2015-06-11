@@ -9,7 +9,8 @@ public:
 	virtual ~Client();
 
 	void on_hello(packets::Hello &packet);
-	void on_test(packets::Test &packet);
+	void on_auth(packets::AuthorizeStatus &packet);
+	void on_accounts(packets::AccountResponse &packet);
 
 	virtual void handle_connection();
 

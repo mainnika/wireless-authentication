@@ -34,18 +34,42 @@ void  protobuf_AddDesc_packets_2eproto();
 void protobuf_AssignDesc_packets_2eproto();
 void protobuf_ShutdownFile_packets_2eproto();
 
-class Packet;
 class Hello;
-class Test;
+class AuthorizeTry;
+class AuthorizeStatus;
+class AccountRequest;
+class AccountResponse;
 
+enum AuthorizeStatus_Status {
+  AuthorizeStatus_Status_BLOCKED = 0,
+  AuthorizeStatus_Status_ALLOWED = 1
+};
+bool AuthorizeStatus_Status_IsValid(int value);
+const AuthorizeStatus_Status AuthorizeStatus_Status_Status_MIN = AuthorizeStatus_Status_BLOCKED;
+const AuthorizeStatus_Status AuthorizeStatus_Status_Status_MAX = AuthorizeStatus_Status_ALLOWED;
+const int AuthorizeStatus_Status_Status_ARRAYSIZE = AuthorizeStatus_Status_Status_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AuthorizeStatus_Status_descriptor();
+inline const ::std::string& AuthorizeStatus_Status_Name(AuthorizeStatus_Status value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AuthorizeStatus_Status_descriptor(), value);
+}
+inline bool AuthorizeStatus_Status_Parse(
+    const ::std::string& name, AuthorizeStatus_Status* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AuthorizeStatus_Status>(
+    AuthorizeStatus_Status_descriptor(), name, value);
+}
 enum ID {
   INVALID = 0,
   HELLO = 1,
-  TEST = 2
+  AUTH_TRY = 2,
+  AUTH_STATUS = 3,
+  ACCOUNT_REQUEST = 4,
+  ACCOUNT_RESPONSE = 5
 };
 bool ID_IsValid(int value);
 const ID ID_MIN = INVALID;
-const ID ID_MAX = TEST;
+const ID ID_MAX = ACCOUNT_RESPONSE;
 const int ID_ARRAYSIZE = ID_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ID_descriptor();
@@ -59,85 +83,6 @@ inline bool ID_Parse(
     ID_descriptor(), name, value);
 }
 // ===================================================================
-
-class Packet : public ::google::protobuf::Message {
- public:
-  Packet();
-  virtual ~Packet();
-
-  Packet(const Packet& from);
-
-  inline Packet& operator=(const Packet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Packet& default_instance();
-
-  void Swap(Packet* other);
-
-  // implements Message ----------------------------------------------
-
-  Packet* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Packet& from);
-  void MergeFrom(const Packet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional .packets.ID id = 1 [default = INVALID];
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::packets::ID id() const;
-  inline void set_id(::packets::ID value);
-
-  // @@protoc_insertion_point(class_scope:packets.Packet)
- private:
-  inline void set_has_id();
-  inline void clear_has_id();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  int id_;
-  friend void  protobuf_AddDesc_packets_2eproto();
-  friend void protobuf_AssignDesc_packets_2eproto();
-  friend void protobuf_ShutdownFile_packets_2eproto();
-
-  void InitAsDefaultInstance();
-  static Packet* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class Hello : public ::google::protobuf::Message {
  public:
@@ -199,30 +144,15 @@ class Hello : public ::google::protobuf::Message {
   inline ::packets::ID id() const;
   inline void set_id(::packets::ID value);
 
-  // required string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
   // @@protoc_insertion_point(class_scope:packets.Hello)
  private:
   inline void set_has_id();
   inline void clear_has_id();
-  inline void set_has_name();
-  inline void clear_has_name();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::std::string* name_;
   int id_;
   friend void  protobuf_AddDesc_packets_2eproto();
   friend void protobuf_AssignDesc_packets_2eproto();
@@ -233,14 +163,14 @@ class Hello : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Test : public ::google::protobuf::Message {
+class AuthorizeTry : public ::google::protobuf::Message {
  public:
-  Test();
-  virtual ~Test();
+  AuthorizeTry();
+  virtual ~AuthorizeTry();
 
-  Test(const Test& from);
+  AuthorizeTry(const AuthorizeTry& from);
 
-  inline Test& operator=(const Test& from) {
+  inline AuthorizeTry& operator=(const AuthorizeTry& from) {
     CopyFrom(from);
     return *this;
   }
@@ -254,17 +184,17 @@ class Test : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Test& default_instance();
+  static const AuthorizeTry& default_instance();
 
-  void Swap(Test* other);
+  void Swap(AuthorizeTry* other);
 
   // implements Message ----------------------------------------------
 
-  Test* New() const;
+  AuthorizeTry* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Test& from);
-  void MergeFrom(const Test& from);
+  void CopyFrom(const AuthorizeTry& from);
+  void MergeFrom(const AuthorizeTry& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -286,88 +216,335 @@ class Test : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .packets.ID id = 1 [default = TEST];
+  // optional .packets.ID id = 1 [default = AUTH_TRY];
   inline bool has_id() const;
   inline void clear_id();
   static const int kIdFieldNumber = 1;
   inline ::packets::ID id() const;
   inline void set_id(::packets::ID value);
 
-  // required int32 some = 2;
-  inline bool has_some() const;
-  inline void clear_some();
-  static const int kSomeFieldNumber = 2;
-  inline ::google::protobuf::int32 some() const;
-  inline void set_some(::google::protobuf::int32 value);
+  // required string key = 2;
+  inline bool has_key() const;
+  inline void clear_key();
+  static const int kKeyFieldNumber = 2;
+  inline const ::std::string& key() const;
+  inline void set_key(const ::std::string& value);
+  inline void set_key(const char* value);
+  inline void set_key(const char* value, size_t size);
+  inline ::std::string* mutable_key();
+  inline ::std::string* release_key();
+  inline void set_allocated_key(::std::string* key);
 
-  // required string hello = 3;
-  inline bool has_hello() const;
-  inline void clear_hello();
-  static const int kHelloFieldNumber = 3;
-  inline const ::std::string& hello() const;
-  inline void set_hello(const ::std::string& value);
-  inline void set_hello(const char* value);
-  inline void set_hello(const char* value, size_t size);
-  inline ::std::string* mutable_hello();
-  inline ::std::string* release_hello();
-  inline void set_allocated_hello(::std::string* hello);
-
-  // @@protoc_insertion_point(class_scope:packets.Test)
+  // @@protoc_insertion_point(class_scope:packets.AuthorizeTry)
  private:
   inline void set_has_id();
   inline void clear_has_id();
-  inline void set_has_some();
-  inline void clear_has_some();
-  inline void set_has_hello();
-  inline void clear_has_hello();
+  inline void set_has_key();
+  inline void clear_has_key();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* key_;
+  int id_;
+  friend void  protobuf_AddDesc_packets_2eproto();
+  friend void protobuf_AssignDesc_packets_2eproto();
+  friend void protobuf_ShutdownFile_packets_2eproto();
+
+  void InitAsDefaultInstance();
+  static AuthorizeTry* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class AuthorizeStatus : public ::google::protobuf::Message {
+ public:
+  AuthorizeStatus();
+  virtual ~AuthorizeStatus();
+
+  AuthorizeStatus(const AuthorizeStatus& from);
+
+  inline AuthorizeStatus& operator=(const AuthorizeStatus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AuthorizeStatus& default_instance();
+
+  void Swap(AuthorizeStatus* other);
+
+  // implements Message ----------------------------------------------
+
+  AuthorizeStatus* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AuthorizeStatus& from);
+  void MergeFrom(const AuthorizeStatus& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef AuthorizeStatus_Status Status;
+  static const Status BLOCKED = AuthorizeStatus_Status_BLOCKED;
+  static const Status ALLOWED = AuthorizeStatus_Status_ALLOWED;
+  static inline bool Status_IsValid(int value) {
+    return AuthorizeStatus_Status_IsValid(value);
+  }
+  static const Status Status_MIN =
+    AuthorizeStatus_Status_Status_MIN;
+  static const Status Status_MAX =
+    AuthorizeStatus_Status_Status_MAX;
+  static const int Status_ARRAYSIZE =
+    AuthorizeStatus_Status_Status_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Status_descriptor() {
+    return AuthorizeStatus_Status_descriptor();
+  }
+  static inline const ::std::string& Status_Name(Status value) {
+    return AuthorizeStatus_Status_Name(value);
+  }
+  static inline bool Status_Parse(const ::std::string& name,
+      Status* value) {
+    return AuthorizeStatus_Status_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // optional .packets.ID id = 1 [default = AUTH_STATUS];
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::packets::ID id() const;
+  inline void set_id(::packets::ID value);
+
+  // required .packets.AuthorizeStatus.Status status = 2;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 2;
+  inline ::packets::AuthorizeStatus_Status status() const;
+  inline void set_status(::packets::AuthorizeStatus_Status value);
+
+  // @@protoc_insertion_point(class_scope:packets.AuthorizeStatus)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_status();
+  inline void clear_has_status();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   int id_;
-  ::google::protobuf::int32 some_;
-  ::std::string* hello_;
+  int status_;
   friend void  protobuf_AddDesc_packets_2eproto();
   friend void protobuf_AssignDesc_packets_2eproto();
   friend void protobuf_ShutdownFile_packets_2eproto();
 
   void InitAsDefaultInstance();
-  static Test* default_instance_;
+  static AuthorizeStatus* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class AccountRequest : public ::google::protobuf::Message {
+ public:
+  AccountRequest();
+  virtual ~AccountRequest();
+
+  AccountRequest(const AccountRequest& from);
+
+  inline AccountRequest& operator=(const AccountRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AccountRequest& default_instance();
+
+  void Swap(AccountRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  AccountRequest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AccountRequest& from);
+  void MergeFrom(const AccountRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .packets.ID id = 1 [default = ACCOUNT_REQUEST];
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::packets::ID id() const;
+  inline void set_id(::packets::ID value);
+
+  // @@protoc_insertion_point(class_scope:packets.AccountRequest)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  int id_;
+  friend void  protobuf_AddDesc_packets_2eproto();
+  friend void protobuf_AssignDesc_packets_2eproto();
+  friend void protobuf_ShutdownFile_packets_2eproto();
+
+  void InitAsDefaultInstance();
+  static AccountRequest* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class AccountResponse : public ::google::protobuf::Message {
+ public:
+  AccountResponse();
+  virtual ~AccountResponse();
+
+  AccountResponse(const AccountResponse& from);
+
+  inline AccountResponse& operator=(const AccountResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AccountResponse& default_instance();
+
+  void Swap(AccountResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  AccountResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AccountResponse& from);
+  void MergeFrom(const AccountResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .packets.ID id = 1 [default = ACCOUNT_RESPONSE];
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::packets::ID id() const;
+  inline void set_id(::packets::ID value);
+
+  // optional string account = 2;
+  inline bool has_account() const;
+  inline void clear_account();
+  static const int kAccountFieldNumber = 2;
+  inline const ::std::string& account() const;
+  inline void set_account(const ::std::string& value);
+  inline void set_account(const char* value);
+  inline void set_account(const char* value, size_t size);
+  inline ::std::string* mutable_account();
+  inline ::std::string* release_account();
+  inline void set_allocated_account(::std::string* account);
+
+  // @@protoc_insertion_point(class_scope:packets.AccountResponse)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_account();
+  inline void clear_has_account();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* account_;
+  int id_;
+  friend void  protobuf_AddDesc_packets_2eproto();
+  friend void protobuf_AssignDesc_packets_2eproto();
+  friend void protobuf_ShutdownFile_packets_2eproto();
+
+  void InitAsDefaultInstance();
+  static AccountResponse* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
-
-// Packet
-
-// optional .packets.ID id = 1 [default = INVALID];
-inline bool Packet::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Packet::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Packet::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Packet::clear_id() {
-  id_ = 0;
-  clear_has_id();
-}
-inline ::packets::ID Packet::id() const {
-  // @@protoc_insertion_point(field_get:packets.Packet.id)
-  return static_cast< ::packets::ID >(id_);
-}
-inline void Packet::set_id(::packets::ID value) {
-  assert(::packets::ID_IsValid(value));
-  set_has_id();
-  id_ = value;
-  // @@protoc_insertion_point(field_set:packets.Packet.id)
-}
-
-// -------------------------------------------------------------------
 
 // Hello
 
@@ -396,209 +573,297 @@ inline void Hello::set_id(::packets::ID value) {
   // @@protoc_insertion_point(field_set:packets.Hello.id)
 }
 
-// required string name = 2;
-inline bool Hello::has_name() const {
+// -------------------------------------------------------------------
+
+// AuthorizeTry
+
+// optional .packets.ID id = 1 [default = AUTH_TRY];
+inline bool AuthorizeTry::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AuthorizeTry::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void AuthorizeTry::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void AuthorizeTry::clear_id() {
+  id_ = 2;
+  clear_has_id();
+}
+inline ::packets::ID AuthorizeTry::id() const {
+  // @@protoc_insertion_point(field_get:packets.AuthorizeTry.id)
+  return static_cast< ::packets::ID >(id_);
+}
+inline void AuthorizeTry::set_id(::packets::ID value) {
+  assert(::packets::ID_IsValid(value));
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:packets.AuthorizeTry.id)
+}
+
+// required string key = 2;
+inline bool AuthorizeTry::has_key() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Hello::set_has_name() {
+inline void AuthorizeTry::set_has_key() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Hello::clear_has_name() {
+inline void AuthorizeTry::clear_has_key() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Hello::clear_name() {
-  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    name_->clear();
+inline void AuthorizeTry::clear_key() {
+  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_->clear();
   }
-  clear_has_name();
+  clear_has_key();
 }
-inline const ::std::string& Hello::name() const {
-  // @@protoc_insertion_point(field_get:packets.Hello.name)
-  return *name_;
+inline const ::std::string& AuthorizeTry::key() const {
+  // @@protoc_insertion_point(field_get:packets.AuthorizeTry.key)
+  return *key_;
 }
-inline void Hello::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    name_ = new ::std::string;
+inline void AuthorizeTry::set_key(const ::std::string& value) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
   }
-  name_->assign(value);
-  // @@protoc_insertion_point(field_set:packets.Hello.name)
+  key_->assign(value);
+  // @@protoc_insertion_point(field_set:packets.AuthorizeTry.key)
 }
-inline void Hello::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    name_ = new ::std::string;
+inline void AuthorizeTry::set_key(const char* value) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
   }
-  name_->assign(value);
-  // @@protoc_insertion_point(field_set_char:packets.Hello.name)
+  key_->assign(value);
+  // @@protoc_insertion_point(field_set_char:packets.AuthorizeTry.key)
 }
-inline void Hello::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    name_ = new ::std::string;
+inline void AuthorizeTry::set_key(const char* value, size_t size) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
   }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:packets.Hello.name)
+  key_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:packets.AuthorizeTry.key)
 }
-inline ::std::string* Hello::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    name_ = new ::std::string;
+inline ::std::string* AuthorizeTry::mutable_key() {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:packets.Hello.name)
-  return name_;
+  // @@protoc_insertion_point(field_mutable:packets.AuthorizeTry.key)
+  return key_;
 }
-inline ::std::string* Hello::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* AuthorizeTry::release_key() {
+  clear_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = key_;
+    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void Hello::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete name_;
+inline void AuthorizeTry::set_allocated_key(::std::string* key) {
+  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete key_;
   }
-  if (name) {
-    set_has_name();
-    name_ = name;
+  if (key) {
+    set_has_key();
+    key_ = key;
   } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_key();
+    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:packets.Hello.name)
+  // @@protoc_insertion_point(field_set_allocated:packets.AuthorizeTry.key)
 }
 
 // -------------------------------------------------------------------
 
-// Test
+// AuthorizeStatus
 
-// optional .packets.ID id = 1 [default = TEST];
-inline bool Test::has_id() const {
+// optional .packets.ID id = 1 [default = AUTH_STATUS];
+inline bool AuthorizeStatus::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Test::set_has_id() {
+inline void AuthorizeStatus::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Test::clear_has_id() {
+inline void AuthorizeStatus::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Test::clear_id() {
-  id_ = 2;
+inline void AuthorizeStatus::clear_id() {
+  id_ = 3;
   clear_has_id();
 }
-inline ::packets::ID Test::id() const {
-  // @@protoc_insertion_point(field_get:packets.Test.id)
+inline ::packets::ID AuthorizeStatus::id() const {
+  // @@protoc_insertion_point(field_get:packets.AuthorizeStatus.id)
   return static_cast< ::packets::ID >(id_);
 }
-inline void Test::set_id(::packets::ID value) {
+inline void AuthorizeStatus::set_id(::packets::ID value) {
   assert(::packets::ID_IsValid(value));
   set_has_id();
   id_ = value;
-  // @@protoc_insertion_point(field_set:packets.Test.id)
+  // @@protoc_insertion_point(field_set:packets.AuthorizeStatus.id)
 }
 
-// required int32 some = 2;
-inline bool Test::has_some() const {
+// required .packets.AuthorizeStatus.Status status = 2;
+inline bool AuthorizeStatus::has_status() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Test::set_has_some() {
+inline void AuthorizeStatus::set_has_status() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Test::clear_has_some() {
+inline void AuthorizeStatus::clear_has_status() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Test::clear_some() {
-  some_ = 0;
-  clear_has_some();
+inline void AuthorizeStatus::clear_status() {
+  status_ = 0;
+  clear_has_status();
 }
-inline ::google::protobuf::int32 Test::some() const {
-  // @@protoc_insertion_point(field_get:packets.Test.some)
-  return some_;
+inline ::packets::AuthorizeStatus_Status AuthorizeStatus::status() const {
+  // @@protoc_insertion_point(field_get:packets.AuthorizeStatus.status)
+  return static_cast< ::packets::AuthorizeStatus_Status >(status_);
 }
-inline void Test::set_some(::google::protobuf::int32 value) {
-  set_has_some();
-  some_ = value;
-  // @@protoc_insertion_point(field_set:packets.Test.some)
+inline void AuthorizeStatus::set_status(::packets::AuthorizeStatus_Status value) {
+  assert(::packets::AuthorizeStatus_Status_IsValid(value));
+  set_has_status();
+  status_ = value;
+  // @@protoc_insertion_point(field_set:packets.AuthorizeStatus.status)
 }
 
-// required string hello = 3;
-inline bool Test::has_hello() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+// -------------------------------------------------------------------
+
+// AccountRequest
+
+// optional .packets.ID id = 1 [default = ACCOUNT_REQUEST];
+inline bool AccountRequest::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Test::set_has_hello() {
-  _has_bits_[0] |= 0x00000004u;
+inline void AccountRequest::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
 }
-inline void Test::clear_has_hello() {
-  _has_bits_[0] &= ~0x00000004u;
+inline void AccountRequest::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
 }
-inline void Test::clear_hello() {
-  if (hello_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    hello_->clear();
+inline void AccountRequest::clear_id() {
+  id_ = 4;
+  clear_has_id();
+}
+inline ::packets::ID AccountRequest::id() const {
+  // @@protoc_insertion_point(field_get:packets.AccountRequest.id)
+  return static_cast< ::packets::ID >(id_);
+}
+inline void AccountRequest::set_id(::packets::ID value) {
+  assert(::packets::ID_IsValid(value));
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:packets.AccountRequest.id)
+}
+
+// -------------------------------------------------------------------
+
+// AccountResponse
+
+// optional .packets.ID id = 1 [default = ACCOUNT_RESPONSE];
+inline bool AccountResponse::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AccountResponse::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void AccountResponse::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void AccountResponse::clear_id() {
+  id_ = 5;
+  clear_has_id();
+}
+inline ::packets::ID AccountResponse::id() const {
+  // @@protoc_insertion_point(field_get:packets.AccountResponse.id)
+  return static_cast< ::packets::ID >(id_);
+}
+inline void AccountResponse::set_id(::packets::ID value) {
+  assert(::packets::ID_IsValid(value));
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:packets.AccountResponse.id)
+}
+
+// optional string account = 2;
+inline bool AccountResponse::has_account() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AccountResponse::set_has_account() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void AccountResponse::clear_has_account() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void AccountResponse::clear_account() {
+  if (account_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_->clear();
   }
-  clear_has_hello();
+  clear_has_account();
 }
-inline const ::std::string& Test::hello() const {
-  // @@protoc_insertion_point(field_get:packets.Test.hello)
-  return *hello_;
+inline const ::std::string& AccountResponse::account() const {
+  // @@protoc_insertion_point(field_get:packets.AccountResponse.account)
+  return *account_;
 }
-inline void Test::set_hello(const ::std::string& value) {
-  set_has_hello();
-  if (hello_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    hello_ = new ::std::string;
+inline void AccountResponse::set_account(const ::std::string& value) {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
   }
-  hello_->assign(value);
-  // @@protoc_insertion_point(field_set:packets.Test.hello)
+  account_->assign(value);
+  // @@protoc_insertion_point(field_set:packets.AccountResponse.account)
 }
-inline void Test::set_hello(const char* value) {
-  set_has_hello();
-  if (hello_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    hello_ = new ::std::string;
+inline void AccountResponse::set_account(const char* value) {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
   }
-  hello_->assign(value);
-  // @@protoc_insertion_point(field_set_char:packets.Test.hello)
+  account_->assign(value);
+  // @@protoc_insertion_point(field_set_char:packets.AccountResponse.account)
 }
-inline void Test::set_hello(const char* value, size_t size) {
-  set_has_hello();
-  if (hello_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    hello_ = new ::std::string;
+inline void AccountResponse::set_account(const char* value, size_t size) {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
   }
-  hello_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:packets.Test.hello)
+  account_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:packets.AccountResponse.account)
 }
-inline ::std::string* Test::mutable_hello() {
-  set_has_hello();
-  if (hello_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    hello_ = new ::std::string;
+inline ::std::string* AccountResponse::mutable_account() {
+  set_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    account_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:packets.Test.hello)
-  return hello_;
+  // @@protoc_insertion_point(field_mutable:packets.AccountResponse.account)
+  return account_;
 }
-inline ::std::string* Test::release_hello() {
-  clear_has_hello();
-  if (hello_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* AccountResponse::release_account() {
+  clear_has_account();
+  if (account_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = hello_;
-    hello_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = account_;
+    account_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void Test::set_allocated_hello(::std::string* hello) {
-  if (hello_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete hello_;
+inline void AccountResponse::set_allocated_account(::std::string* account) {
+  if (account_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete account_;
   }
-  if (hello) {
-    set_has_hello();
-    hello_ = hello;
+  if (account) {
+    set_has_account();
+    account_ = account;
   } else {
-    clear_has_hello();
-    hello_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_account();
+    account_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:packets.Test.hello)
+  // @@protoc_insertion_point(field_set_allocated:packets.AccountResponse.account)
 }
 
 
@@ -610,6 +875,11 @@ inline void Test::set_allocated_hello(::std::string* hello) {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::packets::AuthorizeStatus_Status> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::packets::AuthorizeStatus_Status>() {
+  return ::packets::AuthorizeStatus_Status_descriptor();
+}
 template <> struct is_proto_enum< ::packets::ID> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::packets::ID>() {

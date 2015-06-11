@@ -28,5 +28,6 @@ void Protocol::handle_packet(char* data, size_t len)
 	std::unique_ptr<char, free_delete<char>> data_guard(data);
 
 	HANDLE_PACKET(packets::Hello, Client, on_hello);
-	HANDLE_PACKET(packets::Test, Client, on_test);
+	HANDLE_PACKET(packets::AuthorizeTry, Client, on_auth);
+	HANDLE_PACKET(packets::AccountRequest, Client, on_accounts);
 }
