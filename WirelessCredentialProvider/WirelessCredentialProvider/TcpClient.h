@@ -14,6 +14,7 @@ class TcpClient : private NoCopy
 private:
 
 	uv_tcp_t *socket;
+	uv_timer_t *timer_reconnect;
 
 	char* data;
 	int data_needed;
@@ -21,6 +22,7 @@ private:
 	int data_allocated;
 
 	static void on_connect(uv_connect_t *connection, int status);
+	static void on_reconnect(uv_timer_t* handle);
 	static void on_segment(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf);
 	static void on_write(uv_write_t *req, int status);
 

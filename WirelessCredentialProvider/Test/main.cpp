@@ -7,5 +7,5 @@ int main()
 
 	client.start();
 
-	Sleep(5000);
+	Sleep(500000);
 }
