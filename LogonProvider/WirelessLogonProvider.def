@@ -1,5 +1,0 @@
-LIBRARY WIRELESSLOGONPROVIDER.DLL
-
-EXPORTS
-    DllCanUnloadNow                                 PRIVATE
-    DllGetClassObject                               PRIVATE

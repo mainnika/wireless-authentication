@@ -1,0 +1,25 @@
+package packets;
+
+enum ID {
+	INVALID = 0;
+	HELLO = 1;
+	TEST = 2;
+}
+
+message Packet {
+	optional ID id = 1 [default = INVALID];
+}
+
+message Hello {
+	optional ID id = 1 [default = HELLO];
+
+	required string name = 2;
+}
+
+message Test {
+	optional ID id = 1 [default = TEST];
+
+	required int32 some = 2;
+	required string hello = 3;
+
+}

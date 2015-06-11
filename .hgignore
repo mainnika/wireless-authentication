@@ -1,8 +1,14 @@
 syntax: glob
-WirelessListener/nbproject/*.bash
-WirelessListener/nbproject/private/
-WirelessSpammer/nbproject/private/
-WirelessSpammer/nbproject/*.bash
-LogonProvider/x64/
+WirelessCredentialProvider/x64/
 *.sdf
 *.suo
+*.opensdf
+WirelessCredentialServer/build/
+WirelessCredentialServer/logs/
+WirelessCredentialServer/nbproject/*.bash
+WirelessCredentialServer/nbproject/*.mk
+WirelessCredentialServer/nbproject/private/
+WirelessCredentialProvider/Helpers/x64/
+WirelessCredentialProvider/Helpers/Debug/
+WirelessCredentialProvider/Win32/
+WirelessCredentialProvider/WirelessCredentialProvider/Debug/
