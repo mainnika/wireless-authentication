@@ -7,6 +7,7 @@
 class CCommandWindow;
 class CSampleCredential;
 class CMessageCredential;
+class ThreadedClient;
 
 class CSampleProvider : public ICredentialProvider
 {
@@ -71,4 +72,6 @@ private:
     UINT_PTR                    _upAdviseContext;       // Used to tell our owner who we are when asking to 
                                                         // re-enumerate credentials.
     CREDENTIAL_PROVIDER_USAGE_SCENARIO      _cpus;
+	ThreadedClient				*_client;
+
 };

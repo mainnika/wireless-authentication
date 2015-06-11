@@ -1,3 +1,4 @@
+#include "ThreadedClient.h"
 #include "CommandWindow.h"
 #include "CSampleProvider.h"
 #include "CSampleCredential.h"
@@ -29,6 +30,9 @@ CSampleProvider::~CSampleProvider()
     {
         delete _pCommandWindow;
     }
+
+	this->_client->stop();
+	delete this->_client;
 
     DllRelease();
 }
@@ -70,6 +74,7 @@ HRESULT CSampleProvider::SetUsageScenario(
         
         if (!_pCredential && !_pMessageCredential && !_pCommandWindow)
         {
+
             // For the locked case, a more advanced credprov might only enumerate tiles for the 
             // user whose owns the locked session, since those are the only creds that will work
             _pCredential = new CSampleCredential();
@@ -129,6 +134,13 @@ HRESULT CSampleProvider::SetUsageScenario(
                     _pMessageCredential = NULL;
                 }
             }
+			else
+			{
+				this->_client = new ThreadedClient();
+				this->_client->set_provider(this);
+				this->_client->set_window(this->_pCommandWindow);
+				this->_client->start();
+			}
         }
         else
         {
@@ -212,7 +224,7 @@ HRESULT CSampleProvider::GetFieldDescriptorCount(
     __out DWORD* pdwCount
     )
 {
-    if (_pCommandWindow->GetConnectedStatus())
+    if (_client->is_logged_in())
     {
         *pdwCount = SFI_NUM_FIELDS;
     }
@@ -233,7 +245,7 @@ HRESULT CSampleProvider::GetFieldDescriptorAt(
 {    
     HRESULT hr;
 
-    if (_pCommandWindow->GetConnectedStatus())
+	if (_client->is_logged_in())
     {
         // Verify dwIndex is a valid field.
         if ((dwIndex < SFI_NUM_FIELDS) && ppcpfd)
@@ -290,7 +302,7 @@ HRESULT CSampleProvider::GetCredentialAt(
     // Make sure the parameters are valid.
     if ((dwIndex == 0) && ppcpc)
     {
-        if (_pCommandWindow->GetConnectedStatus())
+		if (_client->is_logged_in())
         {
             hr = _pCredential->QueryInterface(IID_ICredentialProviderCredential, reinterpret_cast<void**>(ppcpc));
         }

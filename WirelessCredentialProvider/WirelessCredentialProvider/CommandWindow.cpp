@@ -54,8 +54,6 @@ HRESULT CCommandWindow::Initialize(__in CSampleProvider *pProvider)
         hr = HRESULT_FROM_WIN32(GetLastError());
     }
 
-	this->_client.start();
-
     return hr;
 }
 
@@ -63,6 +61,11 @@ HRESULT CCommandWindow::Initialize(__in CSampleProvider *pProvider)
 BOOL CCommandWindow::GetConnectedStatus()
 {
     return _fConnected;
+}
+
+void CCommandWindow::SetWindowTitle(LPCWSTR title)
+{
+	SetWindowText(this->_hWnd, title);
 }
 
 //
