@@ -3,12 +3,40 @@
 #include "CSampleProvider.h"
 #include "CommandWindow.h"
 
+#include <SettingsHelper.h>
 #include <easylogging++.h>
 #include <iostream>
+#include <locale>
+#include <codecvt>
+
 
 Client::Client() :
 logged(false)
 {
+	SettingsHelper helper;
+	SettingsHelper::Settings settings;
+
+	try{
+
+		try{
+			settings = helper.load();
+		}
+		catch (std::exception load_error)
+		{
+			LOG(WARNING) << load_error.what();
+			settings = helper.init();
+		}
+
+	}
+	catch (std::exception init_error)
+	{
+		LOG(ERROR) << init_error.what();
+		std::abort();
+	}
+
+	this->id = settings.id;
+
+	LOG(INFO) << "Init application with id " << this->id;
 }
 
 Client::~Client()
@@ -35,8 +63,10 @@ void Client::on_hello(packets::Hello& packet)
 	LOG(INFO) << "Hello received, requesting auth";
 	this->_pWindow->SetWindowTitle(L"TRY AUTH");
 
+	std::string key = std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(this->id);
+
 	packets::AuthorizeTry request;
-	request.set_key("RNRQgLUGcFkPWpLxFzMsuRRLHf7meDVwaaPnG2zwHs7MpZjBWV");
+	request.set_key(key);
 
 	this->send_packet(request);
 }

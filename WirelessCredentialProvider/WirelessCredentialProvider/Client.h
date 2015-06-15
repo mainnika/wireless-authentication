@@ -12,6 +12,7 @@ private:
 	CCommandWindow *_pWindow;
 
 	bool logged;
+	std::wstring id;
 
 public:
 	Client();
