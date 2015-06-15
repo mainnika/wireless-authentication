@@ -13,7 +13,7 @@ ThreadedClient::~ThreadedClient()
 
 void ThreadedClient::on_run()
 {
-	TcpClient::connect(&this->get_loop(), this, "192.168.1.7", 12343);
+	TcpClient::connect(&this->get_loop(), this, "192.168.56.101", 12343);
 }
 
 void ThreadedClient::on_stop()

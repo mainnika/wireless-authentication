@@ -68,7 +68,7 @@ void TcpClient::on_connect(uv_connect_t *connection, int status)
 void TcpClient::on_reconnect(uv_timer_t* handle)
 {
 	TcpClient *client = static_cast<TcpClient*>(handle->data);
-	TcpClient::connect(handle->loop, client, "192.168.1.7", 12343);
+	TcpClient::connect(handle->loop, client, "192.168.56.101", 12343);
 }
 
 
