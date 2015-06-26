@@ -66,8 +66,6 @@ void Clients::disconnect(uv_stream_t *stream, TcpClient* client)
 	this->connected.unsafe_erase(stream);
 	uv_mutex_unlock(&this->mutex);
 
-	delete stream;
-
 	this->available_clients.push(client);
 
 	LOG(INFO) << "Client " << static_cast<void*>(client) << " disconnected";

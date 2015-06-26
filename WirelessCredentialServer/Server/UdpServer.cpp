@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-constexpr int DEFAULT_BACKLOG = 128;
+const int DEFAULT_BACKLOG = 128;
 
 UdpServer::UdpServer(int port, std::string host = "0.0.0.0") :
 host(host), port(port)

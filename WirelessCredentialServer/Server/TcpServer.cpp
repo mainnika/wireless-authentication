@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-constexpr int DEFAULT_BACKLOG = 128;
+const int DEFAULT_BACKLOG = 128;
 
 TcpServer::TcpServer(int port, std::string host = "0.0.0.0") :
 host(host), port(port)
@@ -49,6 +49,6 @@ void TcpServer::on_run()
 void TcpServer::on_stop()
 {
 	uv_close(reinterpret_cast<uv_handle_t*> (&this->server), nullptr);
-	
+
 	LOG(INFO) << "TcpServer " << static_cast<void*> (this) << " stopped";
 }

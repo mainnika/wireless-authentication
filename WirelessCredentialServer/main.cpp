@@ -7,7 +7,6 @@
 #include <google/protobuf/stubs/common.h>
 
 #include <iostream>
-#include <getopt.h>
 #include <uv.h>
 
 INITIALIZE_EASYLOGGINGPP
@@ -29,25 +28,6 @@ int main(int argc, char* argv[])
 		"0.0.0.0",
 		12343
 	);
-
-	char opt;
-	while ((opt = getopt(argc, argv, "ph:")) != -1)
-	{
-		switch (opt)
-		{
-			case 'p':
-				config.port = std::stoul(optarg);
-				break;
-
-			case 'h':
-				config.host.assign(optarg);
-				break;
-
-			default:
-				LOG(ERROR) << "Invalid usage";
-				return -1;
-		}
-	}
 
 	Server server(config);
 	server.start();

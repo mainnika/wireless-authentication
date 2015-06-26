@@ -14,6 +14,14 @@ CND_ARTIFACT_PATH_Debug_Linux=dist/Debug_Linux/GNU-Linux-x86/wirelesscredentials
 CND_PACKAGE_DIR_Debug_Linux=dist/Debug_Linux/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Debug_Linux=wirelesscredentialserver.tar
 CND_PACKAGE_PATH_Debug_Linux=dist/Debug_Linux/GNU-Linux-x86/package/wirelesscredentialserver.tar
+# Debug_Windows configuration
+CND_PLATFORM_Debug_Windows=MinGW-Windows
+CND_ARTIFACT_DIR_Debug_Windows=dist/Debug_Windows/MinGW-Windows
+CND_ARTIFACT_NAME_Debug_Windows=wirelesscredentialserver
+CND_ARTIFACT_PATH_Debug_Windows=dist/Debug_Windows/MinGW-Windows/wirelesscredentialserver
+CND_PACKAGE_DIR_Debug_Windows=dist/Debug_Windows/MinGW-Windows/package
+CND_PACKAGE_NAME_Debug_Windows=wirelesscredentialserver.tar
+CND_PACKAGE_PATH_Debug_Windows=dist/Debug_Windows/MinGW-Windows/package/wirelesscredentialserver.tar
 #
 # include compiler specific variables
 #
