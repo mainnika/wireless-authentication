@@ -3,6 +3,8 @@ WirelessCredentialProvider/x64/
 *.sdf
 *.suo
 *.opensdf
+*.log
+*.dll
 WirelessCredentialServer/build/
 WirelessCredentialServer/logs/
 WirelessCredentialServer/nbproject/*.bash
@@ -12,6 +14,7 @@ WirelessCredentialProvider/Helpers/x64/
 WirelessCredentialProvider/Helpers/Debug/
 WirelessCredentialProvider/Win32/
 WirelessCredentialProvider/WirelessCredentialProvider/Debug/
-*.log
 WirelessCredentialProvider/Test/Debug/
 WirelessCredentialProvider/Test/x64/
+WirelessCredentialServer/dist/
+WirelessCredentialServer/x64/
